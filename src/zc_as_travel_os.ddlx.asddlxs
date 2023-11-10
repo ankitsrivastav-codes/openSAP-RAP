@@ -21,8 +21,8 @@ annotate view ZC_AS_TRAVEL_OS with
                   label: 'Booking',
                   position: 10 }]
 
-  @UI: { identification: [{ position: 1, label: 'Travel UUID' }] }
-  TravelUuid;
+//  @UI: { identification: [{ position: 1, label: 'Travel UUID' }] }
+//  TravelUuid;
 
   @UI:{ lineItem:       [{ position: 10 }],
         identification: [{ position: 10 }],
