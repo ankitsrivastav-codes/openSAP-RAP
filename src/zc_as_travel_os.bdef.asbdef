@@ -1,0 +1,31 @@
+projection;
+strict;
+use draft;
+
+define behavior for ZC_AS_TRAVEL_OS alias Travel
+use etag
+{
+  use create;
+  use update;
+  use delete;
+
+  use association _Booking { create; with draft; }
+
+  use action acceptTravel;
+  use action rejectTravel;
+
+  use action Prepare;
+  use action Edit;
+  use action Activate;
+  use action Resume;
+  use action Discard;
+}
+
+define behavior for ZC_AS_BOOKING_OS alias Booking
+use etag
+{
+  use update;
+  use delete;
+
+  use association _Travel{ with draft; }
+}
