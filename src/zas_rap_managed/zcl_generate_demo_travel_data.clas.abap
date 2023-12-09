@@ -12,7 +12,7 @@ ENDCLASS.
 
 
 
-CLASS zcl_generate_demo_travel_data IMPLEMENTATION.
+CLASS ZCL_GENERATE_DEMO_TRAVEL_DATA IMPLEMENTATION.
 
 
   METHOD if_oo_adt_classrun~main.

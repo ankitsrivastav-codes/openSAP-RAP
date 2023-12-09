@@ -1,0 +1,12 @@
+@EndUserText.label: 'Service Definition for Travel'
+define service ZUI_AS_TRAVEL_U_OS {
+  expose ZC_AS_TRAVEL_U_OS  as Travel;
+  expose ZC_AS_BOOKING_U_OS as Booking;
+  expose /DMO/I_Customer    as Passenger;
+  expose /DMO/I_Agency      as TravelAgency;
+  expose /DMO/I_Carrier     as Airline;
+  expose /DMO/I_Flight      as Flight;
+  expose /DMO/I_Connection  as Connection;
+  expose /DMO/I_Airport     as Airport;
+  expose I_Currency         as Currency;
+}
