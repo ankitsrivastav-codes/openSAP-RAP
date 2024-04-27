@@ -1,18 +1,26 @@
 unmanaged implementation in class zbp_i_as_travel_u_os unique;
 strict ( 2 );
+with draft;
 
 define behavior for ZI_AS_TRAVEL_U_OS alias Travel
-lock master
+lock master total etag Lastchangedat
+draft table zas_traveld_u
 authorization master ( instance )
 etag master Lastchangedat
 {
   create;
   update;
   delete;
-  association _Booking { create; }
+  association _Booking { create; with draft; }
 
   field ( readonly ) TravelID;
   field ( mandatory ) AgencyID, CustomerID, BeginDate, EndDate;
+
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Edit;
+  draft action Resume;
+  draft determine action Prepare;
 
   mapping for /dmo/travel control zas_s_rap_travel
     {
@@ -34,13 +42,14 @@ etag master Lastchangedat
 }
 
 define behavior for ZI_AS_BOOKING_U_OS alias Booking
+draft table zas_bookingd_u
 lock dependent by _Travel
 authorization dependent by _Travel
 etag dependent by _Travel
 {
   update;
   delete;
-  association _Travel;
+  association _Travel{ with draft; }
 
   field ( readonly ) TravelID, BookingID;
   field ( mandatory ) BookingDate, CustomerID, CarrierId, ConnectionID, FlightDate;
